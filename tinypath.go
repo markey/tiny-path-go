@@ -3,7 +3,18 @@ package tiny_path_go
 import (
 	"image/color"
 	"math/rand"
+	"math"
 )
+
+const MAX_DEPTH int = 2
+
+func radiance(ray int, depth int) {
+	if depth > MAX_DEPTH
+		return color.Black
+	t, sphere, normal := intersect_spheres(ray)
+	if math.IsInf(t, 1)
+		return color.Black
+
 
 
 func render(width int, height int, spp int) {
@@ -24,5 +35,7 @@ func render(width int, height int, spp int) {
 			print_progress(i, width * height)
 			i++
 		}
+		save_if_progressively(y, image_data)
 	}
+	return image_data
 }
