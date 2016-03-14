@@ -8,13 +8,24 @@ import (
 
 const MAX_DEPTH int = 2
 
-func radiance(ray int, depth int) {
+type Ray struct {
+	org float64
+	dir float64
+}
+func (r *Ray) hit(t float64) {
+	return r.org + r.dir * t;
+}
+
+func radiance(ray Ray, depth int) {
 	if depth > MAX_DEPTH
 		return color.Black
 	t, sphere, normal := intersect_spheres(ray)
 	if math.IsInf(t, 1)
 		return color.Black
 
+	wo := ray.dir * -1
+	normal := orient_normal(normal, wo)
+//	wi, pdf :=
 
 
 func render(width int, height int, spp int) {
