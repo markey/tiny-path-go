@@ -8,12 +8,28 @@ import (
 
 const MAX_DEPTH int = 2
 
+////////////////////////////////////////////
+// Ray struct
+////////////////////////////////////////////
 type Ray struct {
 	org float64
 	dir float64
 }
+func NewRay(org float64, dir float64) {
+	return Ray {org, dir}
+}
 func (r *Ray) hit(t float64) {
 	return r.org + r.dir * t;
+}
+
+////////////////////////////////////////////
+// Camera struct
+////////////////////////////////////////////
+type Camera struct {
+	eye, focal, view_dist, up float64
+}
+func NewCamera(eye, focal, view_dist, up float64) {
+	return Camera { eye, focal, view_dist, up }
 }
 
 func radiance(ray Ray, depth int) {
